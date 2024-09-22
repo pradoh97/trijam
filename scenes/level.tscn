@@ -47,6 +47,7 @@ shape = SubResource("RectangleShape2D_6anp2")
 [node name="bottom" type="StaticBody2D" parent="WorldLimits"]
 position = Vector2(504, 484)
 rotation = 1.5708
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/bottom"]
 position = Vector2(5, 500)
@@ -55,6 +56,7 @@ shape = SubResource("RectangleShape2D_6anp2")
 [node name="right" type="StaticBody2D" parent="WorldLimits"]
 position = Vector2(502, 484)
 rotation = 3.14159
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/right"]
 position = Vector2(5, 500)
@@ -63,6 +65,7 @@ shape = SubResource("RectangleShape2D_6anp2")
 [node name="top" type="StaticBody2D" parent="WorldLimits"]
 position = Vector2(502, -494)
 rotation = 1.5708
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/top"]
 position = Vector2(21, 500)
