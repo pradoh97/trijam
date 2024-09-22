@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d18cy4rv3e8je"]
+[gd_scene load_steps=7 format=3 uid="uid://d18cy4rv3e8je"]
 
 [ext_resource type="Script" path="res://scenes/player/tristana.gd" id="1_rax3h"]
 [ext_resource type="Texture2D" uid="uid://bde67x2yi8xam" path="res://assets/player.png" id="2_v4vw0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfwvb"]
+radius = 21.0
+height = 62.0
 
 [sub_resource type="Animation" id="Animation_f80dw"]
 resource_name = "idle"
@@ -98,6 +102,8 @@ texture = ExtResource("2_v4vw0")
 hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 5)
+shape = SubResource("CapsuleShape2D_lfwvb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)

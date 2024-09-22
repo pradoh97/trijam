@@ -1,43 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2bxrptfect3p"]
+[gd_scene load_steps=8 format=3 uid="uid://b2bxrptfect3p"]
 
-[ext_resource type="Texture2D" uid="uid://bd08agcisb4dt" path="res://assets/fondo.jpg" id="1_38ahd"]
+[ext_resource type="Texture2D" uid="uid://bd08agcisb4dt" path="res://assets/background.jpg" id="1_38ahd"]
 [ext_resource type="PackedScene" uid="uid://d18cy4rv3e8je" path="res://scenes/player/tristana.tscn" id="2_lasen"]
+[ext_resource type="Texture2D" uid="uid://bdttnmacxjfs5" path="res://assets/foreground.png" id="3_3icxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6anp2"]
-size = Vector2(42, 1020)
+size = Vector2(13.9983, 1020)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksoni"]
-size = Vector2(74, 1020)
+size = Vector2(69.0018, 1022)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ew28y"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iay3y"]
+radius = 33.5261
 
 [node name="Level" type="Node2D"]
 
 [node name="Floor" type="Sprite2D" parent="."]
-position = Vector2(0, 24)
 texture = ExtResource("1_38ahd")
-region_enabled = true
-region_rect = Rect2(47, 104, 940, 876)
+region_rect = Rect2(47, 0.169991, 940, 979.83)
 
 [node name="Tristana" parent="." instance=ExtResource("2_lasen")]
 collision_mask = 2
 
-[node name="Walls" type="Node2D" parent="."]
-
-[node name="Right" type="Sprite2D" parent="Walls"]
-position = Vector2(-490, 0)
-texture = ExtResource("1_38ahd")
-region_enabled = true
-region_rect = Rect2(0, 0, 47, 1024)
-
-[node name="Left" type="Sprite2D" parent="Walls"]
-position = Vector2(485, -9)
-texture = ExtResource("1_38ahd")
-region_enabled = true
-region_rect = Rect2(977, 0, 44, 1024)
+[node name="Foreground" type="Sprite2D" parent="."]
+texture = ExtResource("3_3icxr")
 
 [node name="WorldLimits" type="Node2D" parent="."]
 
 [node name="left" type="StaticBody2D" parent="WorldLimits"]
-position = Vector2(-496, -500)
+position = Vector2(-510, -500)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/left"]
@@ -50,11 +44,11 @@ rotation = 1.5708
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/bottom"]
-position = Vector2(5, 500)
+position = Vector2(19.0009, 500)
 shape = SubResource("RectangleShape2D_6anp2")
 
 [node name="right" type="StaticBody2D" parent="WorldLimits"]
-position = Vector2(502, 484)
+position = Vector2(509, 484)
 rotation = 3.14159
 collision_layer = 2
 
@@ -68,5 +62,32 @@ rotation = 1.5708
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/top"]
-position = Vector2(21, 500)
+position = Vector2(18.501, 501)
 shape = SubResource("RectangleShape2D_ksoni")
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Trees" type="Node2D" parent="Environment"]
+
+[node name="Palmtree" type="StaticBody2D" parent="Environment/Trees"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Trees/Palmtree"]
+position = Vector2(-164, -305)
+shape = SubResource("CircleShape2D_ew28y")
+
+[node name="Palmtree2" type="StaticBody2D" parent="Environment/Trees"]
+position = Vector2(-198, 210)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Trees/Palmtree2"]
+position = Vector2(-159, -305)
+shape = SubResource("CircleShape2D_iay3y")
+
+[node name="Palmtree3" type="StaticBody2D" parent="Environment/Trees"]
+position = Vector2(535, 300)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Trees/Palmtree3"]
+position = Vector2(-159, -305)
+shape = SubResource("CircleShape2D_iay3y")
