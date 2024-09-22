@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2bxrptfect3p"]
+
+[ext_resource type="Texture2D" uid="uid://bd08agcisb4dt" path="res://assets/fondo.jpg" id="1_38ahd"]
+[ext_resource type="PackedScene" uid="uid://d18cy4rv3e8je" path="res://scenes/player/tristana.tscn" id="2_lasen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6anp2"]
+size = Vector2(42, 1020)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksoni"]
+size = Vector2(74, 1020)
+
+[node name="Level" type="Node2D"]
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(0, 24)
+texture = ExtResource("1_38ahd")
+region_enabled = true
+region_rect = Rect2(47, 104, 940, 876)
+
+[node name="Tristana" parent="." instance=ExtResource("2_lasen")]
+collision_mask = 2
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Right" type="Sprite2D" parent="Walls"]
+position = Vector2(-490, 0)
+texture = ExtResource("1_38ahd")
+region_enabled = true
+region_rect = Rect2(0, 0, 47, 1024)
+
+[node name="Left" type="Sprite2D" parent="Walls"]
+position = Vector2(485, -9)
+texture = ExtResource("1_38ahd")
+region_enabled = true
+region_rect = Rect2(977, 0, 44, 1024)
+
+[node name="WorldLimits" type="Node2D" parent="."]
+
+[node name="left" type="StaticBody2D" parent="WorldLimits"]
+position = Vector2(-496, -500)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/left"]
+position = Vector2(5, 500)
+shape = SubResource("RectangleShape2D_6anp2")
+
+[node name="bottom" type="StaticBody2D" parent="WorldLimits"]
+position = Vector2(504, 484)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/bottom"]
+position = Vector2(5, 500)
+shape = SubResource("RectangleShape2D_6anp2")
+
+[node name="right" type="StaticBody2D" parent="WorldLimits"]
+position = Vector2(502, 484)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/right"]
+position = Vector2(5, 500)
+shape = SubResource("RectangleShape2D_6anp2")
+
+[node name="top" type="StaticBody2D" parent="WorldLimits"]
+position = Vector2(502, -494)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimits/top"]
+position = Vector2(21, 500)
+shape = SubResource("RectangleShape2D_ksoni")
